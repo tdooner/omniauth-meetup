@@ -20,6 +20,7 @@ module OmniAuth
       info do
         {
           id: raw_info['id'],
+          email: raw_info['email'],
           name: raw_info['name'],
           photo_url: meetup_photo_url,
           image: meetup_photo_url,
@@ -39,7 +40,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= JSON.parse(access_token.get('/2/member/self').body)
+        @raw_info ||= JSON.parse(access_token.get('/members/self').body)
       end
 
       private
